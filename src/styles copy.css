@@ -486,7 +486,7 @@ input.ng-invalid:not(form), select.ng-invalid  {
   border-bottom: 1px solid #ced4da;
   background-color: white;
 }
-/*
+/* 
 @media (min-width: 1534px) {
   .o_form_view > .o_form_sheet_bg > :not(.o_form_sheet) {
     margin-left: -16px;
@@ -660,7 +660,7 @@ html .o_web_client {
     height: 100%;
     position: relative;
 }
-
+ 
 .o_modal_fullscreen .o_viewer_content .o_viewer-header {
     position: absolute;
     top: 0;
