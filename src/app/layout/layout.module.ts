@@ -7,7 +7,7 @@ import { NavSidebarService } from '../data/service/nav-sidebar.service';
 import { AppLoadingService } from '../data/service/app-loading.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     FormsModule,
+    FlexLayoutModule
 
   ],
   exports: [

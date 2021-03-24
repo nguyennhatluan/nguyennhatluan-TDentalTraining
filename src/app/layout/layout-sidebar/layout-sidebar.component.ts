@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavSidebarService } from 'src/app/data/service/nav-sidebar.service';
+import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
   selector: 'app-layout-sidebar',
@@ -8,7 +9,10 @@ import { NavSidebarService } from 'src/app/data/service/nav-sidebar.service';
 })
 export class LayoutSidebarComponent implements OnInit {
 
-  constructor(public sidebarService:NavSidebarService) { }
+  constructor(
+    public sidebarService:NavSidebarService,
+    public authService:AuthService
+    ) { }
 
   activeIndex = -1;
   folded = false;
