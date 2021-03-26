@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
   });
 
   submitted: boolean = false;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, public authService: AuthService, private router: Router) {
+    if (this.authService.isAuthenticated()){
+      this.router.navigateByUrl('/');
+    }
+  }
 
   ngOnInit(): void {
   }

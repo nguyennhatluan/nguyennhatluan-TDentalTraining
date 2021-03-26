@@ -63,4 +63,11 @@ export class AuthService {
   }
 
 
+  logout(){
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user_info');
+    localStorage.removeItem('user_change_company_vm');
+    this.isLoggedIn = false;
+    this.currentUserSubject.next(new UserViewModel());
+  }
 }

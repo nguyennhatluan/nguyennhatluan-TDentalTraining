@@ -1,4 +1,4 @@
-<div class="login-register bg-light">
+<div class="login-register bg-light" *ngIf="!authService.isAuthenticated()">
   <div class="login-register-box">
       <form [formGroup]="loginForm" (submit)="login()">
           <div class="text-center form-group">

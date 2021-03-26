@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NavSidebarService } from 'src/app/data/service/nav-sidebar.service';
 import { AuthService } from 'src/app/modules/auth/auth.service';
 
@@ -11,7 +12,8 @@ export class LayoutHeaderComponent implements OnInit {
 
   constructor(
     private sidebarService:NavSidebarService,
-    public authService:AuthService
+    public authService:AuthService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class LayoutHeaderComponent implements OnInit {
   }
 
   logout(){
-
+    this.authService.logout();
+    this.router.navigate(['/auth/login']);
   }
 }
