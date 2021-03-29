@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { PartnerCustomerListComponent } from './modules/partner/partner-customer-list/partner-customer-list.component';
+import { PartnersBindingDirective } from './directives/partners-binding.directive';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -17,7 +18,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    PartnerCustomerListComponent
+    PartnerCustomerListComponent,
+    PartnersBindingDirective
   ],
   imports: [
     BrowserModule,

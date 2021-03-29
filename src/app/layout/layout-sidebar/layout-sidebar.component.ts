@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavSidebarService } from 'src/app/data/service/nav-sidebar.service';
+import { NavSidebarService } from 'src/app/data/services/nav-sidebar.service';
 import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
