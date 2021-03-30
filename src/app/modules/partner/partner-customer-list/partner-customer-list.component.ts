@@ -47,4 +47,28 @@ export class PartnerCustomerListComponent implements OnInit {
     return filter;
   }
 
+  createItem(){
+
+  }
+
+  importFromExcel(){
+
+  }
+
+  exportPartnerExcelFile(){
+
+  }
+
+  updateFromExcel(){
+
+  }
+
+  setupAutoCodeCustomer(){
+
+  }
+
+  SavePartnerCategories(){
+
+  }
+
 }
