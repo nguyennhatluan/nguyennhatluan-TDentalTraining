@@ -1,4 +1,4 @@
-import { GridModule,PDFModule, ExcelModule } from '@progress/kendo-angular-grid';
+import { GridModule } from '@progress/kendo-angular-grid';
 import { NgModule } from '@angular/core';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { NumericTextBoxModule } from '@progress/kendo-angular-inputs';
@@ -9,6 +9,7 @@ import { ComboBoxModule, DropDownListModule } from '@progress/kendo-angular-drop
 import { MultiSelectModule } from '@progress/kendo-angular-dropdowns';
 import { ChartModule } from '@progress/kendo-angular-charts';
 import { TreeViewModule } from '@progress/kendo-angular-treeview';
+import { ExcelModule, PDFModule } from '@progress/kendo-angular-grid';
 
 const kendo = [
     GridModule,
