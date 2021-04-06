@@ -4,8 +4,8 @@
     </ol>
     <div class="o_cp_searchview">
         <div class="o_searchview">
-            <input type="text" class="o_searchview_input" placeholder="Theo mã, tên hoặc số điện thoại"
-                [(ngModel)]="search" (ngModelChange)="this.searchUpdate.next($event)" />
+            <!-- <input type="text" class="o_searchview_input" placeholder="Theo mã, tên hoặc số điện thoại"
+                [(ngModel)]="search" (ngModelChange)="this.searchUpdate.next($event)" /> -->
         </div>
     </div>
     <div class="o_cp_left">
@@ -23,95 +23,10 @@
         </div>
     </div>
     <div class="o_cp_right">
-        <div class="d-flex align-items-center">
-            <div class="mr-1">
-                <kendo-multiselect style="min-width: 400px;max-width: 400px;" >
-                </kendo-multiselect>
-            </div>
-            <div>
-                <div ngbDropdown>
-                    <button type="button" id="dropdownBasic1" ngbDropdownToggle class="btn btn-secondary btn-sm">
-                        Mở rộng
-                    </button>
-                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button type="button" (click)="setupAutoCodeCustomer()" ngbDropdownItem>
-                            Cập nhật mã tự động
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 
 <div class="o_content">
-    <kendo-grid >
-        <kendo-grid-column field="Id" width="100" [locked]="true">
-            <ng-template kendoGridHeaderTemplate let-column let-columnIndex="columnIndex">
-                Thao tác
-            </ng-template>
-            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                <button class="btn btn-success btn-sm mr-2" title="Sửa" (click)="editItem(dataItem)">
-                    <i class="far fa-edit"></i></button>
-                <button class="btn btn-danger btn-sm" title="Xóa" (click)="deleteItem(dataItem)">
-                    <i class="far fa-trash-alt"></i></button>
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column field="Name" title="Họ tên" width="200" [locked]="true">
-            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                <div>
-                    <a class="text-primary" title="Xem hồ sơ khách hàng"
-                        [routerLink]="['/partners/customer/' + dataItem.Id]">
-                        <!-- <span *ngIf="dataItem.ref">[{{dataItem.Ref}}] </span> {{dataItem.Name}} -->
-                        Hồ sơ khách hàng
-                    </a>
-                </div>
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column field="Ref" title="Mã KH" width="120" [locked]="true"></kendo-grid-column>
-        <kendo-grid-column field="Phone" title="Điện thoại" width="120" [locked]="true"></kendo-grid-column>
-        <kendo-grid-column field="Age" title="Tuổi" width="60"></kendo-grid-column>
-        <kendo-grid-column field="GenderDisplay" title="Giới tính" width="90">
-        </kendo-grid-column>
-        <kendo-grid-column field="Address" title="Địa chỉ" width="300"></kendo-grid-column>
-        <kendo-grid-column title="Nhãn" width="200">
-            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                <!-- <app-partner-category-popover [tags]="dataItem.Tags" (onSave)="dataItem.Tags = $event"
-                    [rowPartnerId]="dataItem.Id">
-                </app-partner-category-popover> -->
-            </ng-template>
-        </kendo-grid-column>
-        <kendo-grid-column field="DateOfBirth" title="Ngày sinh" width="120"></kendo-grid-column>
-        <kendo-grid-column field="Date" title="Ngày tạo" width="120">
-            <!-- <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-                {{dataItem.Date | date : 'shortDate'}}
-            </ng-template> -->
-        </kendo-grid-column>
-        <kendo-grid-column field="SourceName" title="Nguồn" width="150">
-        </kendo-grid-column>
-        <kendo-grid-column field="JobTitle" title="Nghề nghiệp" width="150">
-        </kendo-grid-column>
-        <kendo-grid-column field="Email" title="Email" width="200">
-        </kendo-grid-column>
-        <kendo-grid-column field="Comment" title="Ghi chú" width="150">
-        </kendo-grid-column>
-    </kendo-grid>
-    <app-partner-profile-print></app-partner-profile-print>
 
-    <ng-template #popContent let-dataItem="dataItem">
-        <div>
-            <kendo-multiselect class="mr-1">
-            </kendo-multiselect>
-            <button type="button" class="btn mt-1 btn-primary" (click)="SavePartnerCategories()" accesskey="c">
-                Lưu
-            </button>
-        </div>
-    </ng-template>
-
-    <ng-template #popTitle>
-        <div class="d-flex align-items-center">
-            <span>Nhãn khách hàng</span>
-            <button type="button" class="close ml-auto" (click)="popOver.close()" tabindex="-1">×</button>
-        </div>
-    </ng-template>
 </div>

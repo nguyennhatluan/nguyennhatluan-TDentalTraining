@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { PagedResult2 } from 'src/app/data/types/shared/shared';
 export class PartnerDisplay{
   id: string = '';
   name: string = '';
@@ -99,10 +99,18 @@ export class PartnersService {
   apiUrl = 'api/Partners';
   constructor(private http: HttpClient, @Inject('BASE_API') private baseApi: string) { }
 
-  // getPartnerPaged(partnerPaged: PartnerPaged):Observable<PagedResult2<PartnerBasic>>{
-  //   var params = new HttpParams()
-  //       .set('offset', partnerPaged.offSet.toString())
-  // }
+  getPartnerPaged(partnerPaged: PartnerPaged):Observable<PagedResult2<PartnerBasic>>{
+    var params = new HttpParams()
+        .set('offset', partnerPaged.offSet.toString())
+        .set('limit', partnerPaged.limit.toString())
+        .set('customer',partnerPaged.customer!.toString())
+        .set('supplier',partnerPaged.supplier!.toString());
+        if(partnerPaged.search){
+          params = params.set('searchNamePhoneRef',partnerPaged.search);
+
+        }
+        return this.http.get<PagedResult2<PartnerBasic>>(this.baseApi+this.apiUrl+"?"+params);
+  }
 
   create(val: PartnerDisplay){
     return this.http.post(this.baseApi + this.apiUrl, val);

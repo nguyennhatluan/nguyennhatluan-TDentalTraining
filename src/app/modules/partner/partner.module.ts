@@ -5,6 +5,7 @@ import { PartnerRoutingModule } from './partner-routing.module';
 import { MyCustomKendoModule } from 'src/app/shared/modules/my-custom-kendo-module/my-custom-kendo-module.module';
 
 
+
 @NgModule({
   declarations: [],
   imports: [

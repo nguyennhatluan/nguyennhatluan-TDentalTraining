@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompositeFilterDescriptor } from '@progress/kendo-data-query';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { PartnerPaged, PartnersService } from 'src/app/data/services/partners.service';
 
 @Component({
   selector: 'app-partner-customer-list',
@@ -12,7 +13,9 @@ export class PartnerCustomerListComponent implements OnInit {
 
   search: string = "";
   searchUpdate = new Subject<string>();
-  constructor() { }
+  constructor(
+    private partnerService: PartnersService
+  ) { }
 
   ngOnInit(): void {
     this.searchUpdate.pipe(
@@ -22,29 +25,30 @@ export class PartnerCustomerListComponent implements OnInit {
 
         }
       );
+    this.loadDataFromApi();
   }
 
   generateFilter(){
-    var filter: CompositeFilterDescriptor = {
-      logic: "and",
-      filters: [
-        { field: "Customer", operator: "eq", value: true },
-      ]
-    };
+    // var filter: CompositeFilterDescriptor = {
+    //   logic: "and",
+    //   filters: [
+    //     { field: "Customer", operator: "eq", value: true },
+    //   ]
+    // };
 
-    if (this.search) {
-      filter.filters.push({
-        logic: "or",
-        filters: [
-          { field: "Name", operator: "contains", value: this.search },
-          { field: "NameNoSign", operator: "contains", value: this.search },
-          { field: "Ref", operator: "contains", value: this.search },
-          { field: "Phone", operator: "contains", value: this.search }
-        ]
-      });
-    }
+    // if (this.search) {
+    //   filter.filters.push({
+    //     logic: "or",
+    //     filters: [
+    //       { field: "Name", operator: "contains", value: this.search },
+    //       { field: "NameNoSign", operator: "contains", value: this.search },
+    //       { field: "Ref", operator: "contains", value: this.search },
+    //       { field: "Phone", operator: "contains", value: this.search }
+    //     ]
+    //   });
+    // }
 
-    return filter;
+   // return filter;
   }
 
   createItem(){
@@ -69,6 +73,15 @@ export class PartnerCustomerListComponent implements OnInit {
 
   SavePartnerCategories(){
 
+  }
+
+  loadDataFromApi(){
+    var val = new PartnerPaged();
+    val.search = '';
+    this.partnerService.getPartnerPaged(val).subscribe(result => {
+      console.log(result);
+
+    })
   }
 
 }
