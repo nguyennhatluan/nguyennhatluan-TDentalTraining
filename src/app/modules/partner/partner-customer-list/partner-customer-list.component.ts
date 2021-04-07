@@ -15,6 +15,8 @@ export class PartnerCustomerListComponent implements OnInit {
   search: string = "";
   searchUpdate = new Subject<string>();
   gridView!: GridDataResult;
+  skip = 0;
+  pageSize = 20;
   constructor(
     private partnerService: PartnersService
   ) { }
@@ -81,7 +83,10 @@ export class PartnerCustomerListComponent implements OnInit {
     var val = new PartnerPaged();
     this.partnerService.getPartnerPaged(val).subscribe(result => {
       console.log(result);
-
+      this.gridView = {
+        data: result.items,
+        total: result.totalItems
+      }
     })
   }
 

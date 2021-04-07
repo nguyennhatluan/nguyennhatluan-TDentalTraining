@@ -11,6 +11,8 @@ import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 import { PartnerCustomerListComponent } from './modules/partner/partner-customer-list/partner-customer-list.component';
 import { PartnersBindingDirective } from './directives/partners-binding.directive';
 import { TokenInterceptor } from './modules/auth/auth.interceptor';
+import { CommonModule } from '@angular/common';
+import { PartnerModule } from './modules/partner/partner.module';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -19,10 +21,10 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    PartnerCustomerListComponent,
     PartnersBindingDirective
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     LayoutModule,
@@ -36,6 +38,7 @@ export function tokenGetter() {
     FlexLayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    PartnerModule
   ],
   providers: [
     {
