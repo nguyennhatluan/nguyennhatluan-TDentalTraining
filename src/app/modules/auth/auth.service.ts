@@ -36,6 +36,10 @@ export class AuthService {
         return !this.jwtHelper.isTokenExpired(token);
   }
 
+  getAuthorizationToken() {
+    return localStorage.getItem('access_token');
+  }
+
   login(userLoginForm: UserLoginForm){
     var val = new LoginViewModel();
     val.userName = userLoginForm.username;

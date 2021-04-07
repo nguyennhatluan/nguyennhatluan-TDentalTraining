@@ -52,14 +52,15 @@ export class PartnerDisplay{
 
 export class PartnerPaged {
   offSet: number = 0;
-  limit: number = 0;
+  limit: number = 20;
   search: string = '';
-  customer?: boolean = false;
+  customer?: boolean = true;
   employee?: boolean = false;
   supplier?: boolean = false;
   tagIds: string[] = [];
   computeCreditDebit: boolean = false;
-  active: boolean = false;
+  active?: boolean = true;
+  isBoth?: boolean = false;
 }
 
 export class PartnerBasic {
@@ -103,12 +104,18 @@ export class PartnersService {
     var params = new HttpParams()
         .set('offset', partnerPaged.offSet.toString())
         .set('limit', partnerPaged.limit.toString())
-        .set('customer',partnerPaged.customer!.toString())
-        .set('supplier',partnerPaged.supplier!.toString());
-        if(partnerPaged.search){
-          params = params.set('searchNamePhoneRef',partnerPaged.search);
+        // .set('search',partnerPaged.search.toString())
+        // .set('customer',partnerPaged.customer!.toString())
+        // .set('employee',partnerPaged.employee!.toString())
+        // .set('supplier',partnerPaged.supplier!.toString())
+        // //.set('tagIds',partnerPaged.tagIds.toString())
+        .set('computeCreditDebit',partnerPaged.computeCreditDebit.toString())
+        .set('active',partnerPaged.active!.toString())
+        .set('isBoth',partnerPaged.isBoth!.toString());
+        // if(partnerPaged.search){
+        //   params = params.set('searchNamePhoneRef',partnerPaged.search);
 
-        }
+        // }
         return this.http.get<PagedResult2<PartnerBasic>>(this.baseApi+this.apiUrl+"?"+params);
   }
 

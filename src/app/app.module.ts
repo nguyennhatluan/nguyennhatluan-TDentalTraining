@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor, JwtModule } from '@auth0/angular-jwt';
 import { PartnerCustomerListComponent } from './modules/partner/partner-customer-list/partner-customer-list.component';
 import { PartnersBindingDirective } from './directives/partners-binding.directive';
+import { TokenInterceptor } from './modules/auth/auth.interceptor';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -36,7 +37,18 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

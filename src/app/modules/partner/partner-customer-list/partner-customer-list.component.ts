@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GridDataResult} from '@progress/kendo-angular-grid';
 import { CompositeFilterDescriptor } from '@progress/kendo-data-query';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -13,6 +14,7 @@ export class PartnerCustomerListComponent implements OnInit {
 
   search: string = "";
   searchUpdate = new Subject<string>();
+  gridView!: GridDataResult;
   constructor(
     private partnerService: PartnersService
   ) { }
@@ -77,11 +79,14 @@ export class PartnerCustomerListComponent implements OnInit {
 
   loadDataFromApi(){
     var val = new PartnerPaged();
-    val.search = '';
     this.partnerService.getPartnerPaged(val).subscribe(result => {
       console.log(result);
 
     })
+  }
+
+  pageChange(event:any){
+
   }
 
 }

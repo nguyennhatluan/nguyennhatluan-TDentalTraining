@@ -4,8 +4,8 @@
     </ol>
     <div class="o_cp_searchview">
         <div class="o_searchview">
-            <!-- <input type="text" class="o_searchview_input" placeholder="Theo mã, tên hoặc số điện thoại"
-                [(ngModel)]="search" (ngModelChange)="this.searchUpdate.next($event)" /> -->
+            <input type="text" class="o_searchview_input" placeholder="Theo mã, tên hoặc số điện thoại"
+                [(ngModel)]="search" (ngModelChange)="this.searchUpdate.next($event)" />
         </div>
     </div>
     <div class="o_cp_left">
@@ -28,5 +28,27 @@
 </div>
 
 <div class="o_content">
-
+    <kendo-grid
+          [data]="gridView"
+          [pageSize]="pageSize"
+          [skip]="skip"
+          [pageable]="true"
+          [height]="400"
+          (pageChange)="pageChange($event)"
+        >
+        <kendo-grid-column title="Thao tác" [locked]="true"></kendo-grid-column>
+        <kendo-grid-column title="Họ tên"></kendo-grid-column>
+        <kendo-grid-column title="Mã KH"></kendo-grid-column>
+        <kendo-grid-column title="Tuổi"></kendo-grid-column>
+        <kendo-grid-column title="Giới tính"></kendo-grid-column>
+        <kendo-grid-column title="Địa chỉ"></kendo-grid-column>
+        <kendo-grid-column title="Nhãn"></kendo-grid-column>
+        <kendo-grid-column title="Ngày sinh"></kendo-grid-column>
+        <kendo-grid-column title="Ngày tạo"></kendo-grid-column>
+        <kendo-grid-column title="Điện thoại"></kendo-grid-column>
+        <kendo-grid-column title="Nguồn"></kendo-grid-column>
+        <kendo-grid-column title="Nghề nghiệp"></kendo-grid-column>
+        <kendo-grid-column title="Email"></kendo-grid-column>
+        <kendo-grid-column title="Ghi chú"></kendo-grid-column>
+      </kendo-grid>
 </div>
