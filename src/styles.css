@@ -845,3 +845,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* luân add css */
+
+.k-grid .k-grid-header-locked, .k-grid .k-grid-content-locked, .k-grid .k-grid-header-locked .k-header, .k-grid .k-grid-content-locked td {
+  border-color: rgba(33, 37, 41, 0.125);
+}
