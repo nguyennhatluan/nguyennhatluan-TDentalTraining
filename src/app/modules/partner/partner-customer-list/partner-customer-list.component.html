@@ -29,19 +29,51 @@
 
 <div class="o_content">
     <kendo-grid [data]="gridView" [pageSize]="pageSize" [skip]="skip" [pageable]="true" [height]="400" (pageChange)="pageChange($event)">
-        <kendo-grid-column title="Thao tác"></kendo-grid-column>
-        <kendo-grid-column field="name" title="Họ tên"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Mã KH"></kendo-grid-column>
-        <kendo-grid-column field="age" title="Tuổi"></kendo-grid-column>
-        <kendo-grid-column field="gender" title="Giới tính"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Địa chỉ"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Nhãn"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Ngày sinh"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Ngày tạo"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Điện thoại"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Nguồn"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Nghề nghiệp"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Email"></kendo-grid-column>
-        <kendo-grid-column field="ref" title="Ghi chú"></kendo-grid-column>
+        <kendo-grid-column title="Thao tác" [width]="150" [locked]="true">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <button class="btn btn-success btn-sm mr-2" title="Sửa" (click)="editItem(dataItem)">
+                    <i class="far fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-sm" title="Xóa" (click)="deleteItem(dataItem)">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </ng-template>
+            
+        </kendo-grid-column>
+        <kendo-grid-column field="name" title="Họ tên" [width]="150" [locked]="true">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                <a class="text-primary" title="Xem hồ sơ khách hàng" [routerLink]="['/partners/customer/'+dataItem.Id]">
+                    <span *ngIf="dataItem.ref">[{{dataItem.ref}}]</span>
+                    {{dataItem.name}}
+                </a>
+            </ng-template>
+            
+        </kendo-grid-column>
+        <kendo-grid-column field="ref" title="Mã KH" [width]="150" [locked]="true"></kendo-grid-column>
+        <kendo-grid-column field="age" title="Tuổi" [width]="150" [locked]="true"></kendo-grid-column>
+        <kendo-grid-column field="phone" title="Điện thoại" [width]="150" [locked]="true"></kendo-grid-column>
+        <kendo-grid-column field="gender" title="Giới tính" [width]="150">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{getGender(dataItem.gender)}}
+            </ng-template>
+            
+        </kendo-grid-column>
+        <kendo-grid-column field="address" title="Địa chỉ" [width]="150"></kendo-grid-column>
+        <kendo-grid-column field="ref" title="Nhãn" [width]="150"></kendo-grid-column>
+        <kendo-grid-column title="Ngày sinh" [width]="150">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.birthDay}}/{{dataItem.birthMonth}}/{{dataItem.birthYear}}
+            </ng-template>
+            
+        </kendo-grid-column>
+        <kendo-grid-column field="ref" title="Ngày tạo" [width]="150">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{dataItem.dateCreated | date: 'shortDate'}}
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="source" title="Nguồn" [width]="150"></kendo-grid-column>
+        <kendo-grid-column field="jobTitle" title="Nghề nghiệp" [width]="150"></kendo-grid-column>
+        <kendo-grid-column field="email" title="Email" [width]="150"></kendo-grid-column>
+        <kendo-grid-column field="comment" title="Ghi chú" [width]="150"></kendo-grid-column>
       </kendo-grid>
 </div>

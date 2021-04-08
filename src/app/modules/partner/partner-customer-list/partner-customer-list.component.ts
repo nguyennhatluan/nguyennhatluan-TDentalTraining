@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GridDataResult} from '@progress/kendo-angular-grid';
 import { CompositeFilterDescriptor } from '@progress/kendo-data-query';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { PartnerPaged, PartnersService } from 'src/app/data/services/partners.service';
+import { PartnerCustomerCuDialogComponent } from '../partner-customer-cu-dialog/partner-customer-cu-dialog.component';
 
 @Component({
   selector: 'app-partner-customer-list',
@@ -18,7 +20,8 @@ export class PartnerCustomerListComponent implements OnInit {
   skip = 0;
   pageSize = 20;
   constructor(
-    private partnerService: PartnersService
+    private partnerService: PartnersService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +59,10 @@ export class PartnerCustomerListComponent implements OnInit {
   }
 
   createItem(){
+    const modalRef = this.modalService.open(
+      PartnerCustomerCuDialogComponent,
+      {size: 'lg'}
+    )
 
   }
 
@@ -94,4 +101,20 @@ export class PartnerCustomerListComponent implements OnInit {
 
   }
 
+  getGender(item:string){
+    if(item == 'male'){
+      return "Nam"
+    }
+    else{
+      return "Nữ"
+    }
+  }
+
+  editItem(item:any){
+
+  }
+
+  deleteItem(item:any){
+    
+  }
 }
