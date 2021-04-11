@@ -6,7 +6,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss()" tabindex="-1">×</button>
 </header>
 <div class="modal-body o_act_window">
-    <form class="o_form_view">
+    <form class="o_form_view" [formGroup]="formGroup">
         <div class="o_form_sheet_bg">
             <div class="float-right">
 
@@ -16,6 +16,9 @@
                 <h1>
                     <input class="form-control" formControlName="name" name="name">
                 </h1>
+                <div *ngIf="f.name.errors && (f.name.touched || f.name.dirty || submitted)" class="text-danger mb-1">
+                  <div *ngIf="f.name.errors.required">Nhập tên khách hàng</div>
+                </div>
             </div>
             <div class="o_notebook">
                 <ul class="nav nav-tabs" role="tablist">
@@ -53,15 +56,15 @@
                                         </td>
                                         <td colspan="1" style="width: 100%;">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="male_radio" value="male">
+                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="male_radio" value="male" name="gender" checked>
                                                 <label class="form-check-label" for="male_radio">Nam</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="female_radio" value="female">
+                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="female_radio" value="female" name="gender">
                                                 <label class="form-check-label" for="female_radio">Nữ</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="other_radio" value="other">
+                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="other_radio" value="other" name="gender">
                                                 <label class="form-check-label" for="other_radio">Khác</label>
                                             </div>
                                         </td>
@@ -149,7 +152,7 @@
                                                     Địa chỉ
                                                 </label>
                                                 <div class="pl-3">
-                                                   
+
                                                 </div>
                                             </div>
 
