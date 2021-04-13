@@ -62,7 +62,8 @@ export class PartnerCustomerListComponent implements OnInit {
     const modalRef = this.modalService.open(
       PartnerCustomerCuDialogComponent,
       {size: 'lg'}
-    )
+    );
+    modalRef.componentInstance.title = "Thêm khách hàng";
 
   }
 
@@ -116,5 +117,9 @@ export class PartnerCustomerListComponent implements OnInit {
 
   deleteItem(item:any){
     
+  }
+
+  onChangeGender(value:any){
+
   }
 }

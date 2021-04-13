@@ -81,6 +81,13 @@ export class PartnerCustomerCuDialogComponent implements OnInit {
 
   }
 
+  quickCreateTitle(){
+
+  }
+
+  loadTitleList(){
+
+  }
 
 
 }
