@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
- apiDomain: 'https://localhost:44377/',
- // apiDomain: 'https://test3.tdental.vn/',
+ //apiDomain: 'https://localhost:44377/',
+  //apiDomain: 'https://test3.tdental.dev/',
+  apiDomain: 'https://test3.tdental.vn/',
 };
 
 /*

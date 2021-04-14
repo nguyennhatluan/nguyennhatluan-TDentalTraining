@@ -22,10 +22,7 @@ export class PartnerTitlePaged {
 })
 export class PartnerTitleService {
   apiUrl = "api/PartnerTitles";
-  constructor(
-    private http: HttpClient,
-    @Inject("BASE_API") private baseApi: string
-  ) { }
+  constructor(private http: HttpClient, @Inject("BASE_API") private baseApi: string) { }
 
   autocomplete(val: PartnerTitlePaged): Observable<PartnerTitle[]> {
     return this.http.post<PartnerTitle[]>(this.baseApi + this.apiUrl + "/autocomplete", val);

@@ -119,6 +119,18 @@ export class PartnersService {
         return this.http.get<PagedResult2<PartnerBasic>>(this.baseApi+this.apiUrl+"?"+params);
   }
 
+  getDefaultTitle(val: any){
+    return this.http.get(this.baseApi + this.apiUrl + '/GetDefaultTitle',{params:new HttpParams({fromObject:val})})
+  }
+
+  getDefaultDisplay(val?: any){
+    return this.http.post<PartnerDisplay>(this.baseApi + this.apiUrl + '/DefaultGet',val || {});
+  }
+
+  getById(id: string){
+    return this.http.get<PartnerDisplay>(this.baseApi + this.apiUrl + '/' + id);
+  }
+
   create(val: PartnerDisplay){
     return this.http.post(this.baseApi + this.apiUrl, val);
   }
