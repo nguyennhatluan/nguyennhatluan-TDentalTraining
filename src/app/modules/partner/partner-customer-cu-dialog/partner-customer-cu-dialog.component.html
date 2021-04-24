@@ -56,15 +56,15 @@
                                         </td>
                                         <td colspan="1" style="width: 100%;">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="male_radio" value="male" name="gender" checked>
+                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event?.target?.value)" id="male_radio" [value]="male" name="gender" checked>
                                                 <label class="form-check-label" for="male_radio">Nam</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="female_radio" value="female" name="gender">
+                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event?.target?.value)" id="female_radio" [value]="female" name="gender">
                                                 <label class="form-check-label" for="female_radio">Nữ</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event.target.value)" id="other_radio" value="other" name="gender">
+                                                <input class="form-check-input" type="radio" formControlName="gender" (change)="onChangeGender($event?.target?.value)" id="other_radio" [value]="other" name="gender">
                                                 <label class="form-check-label" for="other_radio">Khác</label>
                                             </div>
                                         </td>
@@ -76,7 +76,7 @@
                                         <td colspan="1" style="width:100%">
                                             <div class="d-flex">
                                                 <select class="form-control" formControlName="birthDayStr">
-                                                    <option value="">Ngày</option>
+                                                    <option [value]="">Ngày</option>
                                                     <option *ngFor="let i of dayList">
                                                         {{i}}</option>
                                                 </select>
